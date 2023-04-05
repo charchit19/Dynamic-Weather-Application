@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <link rel="icon" href="icon.png" />
+  <title>My Weather</title>
+  <style>
+    .colhh {
+      width: 20%;
+      text-align: center;
+    }
+
+    .colhh1 {
+      width: 20%;
+      text-align: center;
+      background-color: #212529;
+      color: white;
+    }
+
+    .text-start {
+      width: 20%;
+      text-align: center;
+    }
+
+    .liu {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .head {
+      background-color: #212529;
+      color: white;
+    }
+
+    .heading {
+      font-size: xx-large;
+      font-style: italic;
+    }
+    .card{
+      background-color:lightgrey;
+    }
+    .card:hover {
+      transform: scale(1.1);
+      background-color: cornsilk;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    }
+  </style>
+</head>
+
+<body style="background-color:ghostwhite;">
+  <nav class="navbar navbar-expand navbar-dark bg-dark" style="background-color: #e3f2fd">
+    <h2 class="navbar-brand" href="#">My Weather</h2>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" padding-right: auto;>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="About.html">About <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 ">
+        <input id="city" class="form-control mr-sm-2" type="search" placeholder="Enter City" aria-label="Search" />
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="submit">
+          Get Weather
+        </button>
+      </form>
+    </div>
+  </nav>
+  <div class="container">
+    <h2 class="my-3 text-center">Weather for  <span id="cityName"></span></h2>
+    <main>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card border-dark mb-4 rounded-3 shadow-sm">
+            <div class="head card-header py-3">
+              <h4 class="heading my-0 fw-normal">Temperature</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                <span id="temp"></span><small class="text-muted fw-light"> °C</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <br>
+                <li class="liu">Temp (°F) : <span id="fah"></span></li>
+                <li class="liu">Condition : <span id="condition"></span></li>
+                <li class="liu">Sunrise : <span id="sunrise"></span></li>
+                <li class="liu">Sunset : <span id="sunset"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-dark mb-4 rounded-3 shadow-sm">
+            <div class="head card-header py-3">
+              <h4 class="heading my-0 fw-normal">Humidity</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                <span id="humidity"></span><small class="text-muted fw-light">%</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <br>
+                <li class="liu">Wind Speed : <span id="wind_speed"></span> km/h</li>
+                <li class="liu">Wind Direction : <span id="wind_direction"></span>
+                </li>
+                <li class="liu">Pressure : <span id="press"></span> mb</li>
+                <li class="liu">Visibility : <span id="visibility"></span> km</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-dark mb-4 rounded-3 shadow-sm">
+            <div class="head card-header border-dark py-3">
+              <h4 class="heading my-0 fw-normal">Geography</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                <span id="country"></span>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li class="liu">
+                  Longitude: <span id="long"></span> </li>
+                <li class="liu">Latitude: <span id="lat"></span> </li>
+                <li class="liu">Region : <span id="region"></span></li>
+                <li class="liu">Time Zone : <span id="timezone"></span> </li>
+                <li class="liu">Woeid : <span id="woeid"></span> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <h2 class="display-6 text-center mb-4">Weather of Other Cities</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="colhh1">City</th>
+          <th class="colhh1">Country</th>
+          <th class="colhh1">Temperature (°C)</th>
+          <th class="colhh1">Condition</th>
+          <th class="colhh1">Humidity (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="text-start">Delhi</th>
+          <td class="colhh"><span id="country1"></span></td>
+          <td class="colhh"><span id="temp1"></span></td>
+          <td class="colhh"><span id="condition1"></span></td>
+          <td class="colhh"><span id="humidity1"></span></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">London</th>
+          <td class="colhh"><span id="country2"></span></td>
+          <td class="colhh"><span id="temp2"></span></td>
+          <td class="colhh"><span id="condition2"></span></td>
+          <td class="colhh"><span id="humidity2"></span></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <th scope="row" class="text-start">Seattle</th>
+          <td class="colhh"><span id="country3"></span></td>
+          <td class="colhh"><span id="temp3"></span></td>
+          <td class="colhh"><span id="condition3"></span></td>
+          <td class="colhh"><span id="humidity3"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </main>
+  </div>
+  <div class="footer" style="top:autoh; position: relative">
+    <footer class="bg-dark text-center text-lg-start" style="color: white;">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright: All Right Reserved
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+9autozO0rT7abK41JStQIAqVgRVzpbzautomXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZautotwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
